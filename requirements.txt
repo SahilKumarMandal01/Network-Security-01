@@ -8,5 +8,5 @@ pyaml
 fastapi
 unicorn
 python-multipart
-
+pymongo[srv]==3.12
 # -e .
