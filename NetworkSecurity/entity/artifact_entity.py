@@ -32,3 +32,18 @@ class DataValidationArtifact:
             f"  Invalid Test File Path : {self.invalid_test_file_path}\n"
             f"  Drift Report File Path : {self.drift_report_file_path}\n"
         )
+
+
+@dataclass
+class DataTransformationArtifact:
+    transformed_object_file_path: str
+    transformed_train_file_path: str
+    transformed_test_file_path: str
+
+    def __str__(self):
+        return (
+            f"\nDataTransformationArtifact:\n"
+            f"  Transformed Object File Path: {self.transformed_object_file_path}\n"
+            f"  Transformed Train File Path : {self.transformed_train_file_path}\n"
+            f"  Transformed Test File Path  : {self.transformed_test_file_path}\n"
+        )

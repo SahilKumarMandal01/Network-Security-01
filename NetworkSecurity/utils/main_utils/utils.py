@@ -41,3 +41,58 @@ def write_yaml_file(file_path: str, content: Any, replace: bool=False) -> None:
     
     except Exception as e:
         raise NetworkSecurityException(e, sys)
+
+
+def save_numpy_array_data(file_path: str, array: np.ndarray) -> None:
+    """
+    Saved a Numpy array to a file.
+    """
+    try:
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(file_path, "wb") as file_obj:
+            np.save(file_obj, array)
+        logging.info(f"Numpy array saved at: {file_path}")
+    except Exception as e:
+        raise NetworkSecurityException(e, sys)
+
+
+def load_numpy_array_data(file_path: str) -> np.ndarray:
+    """
+    Loads a Numpy array from a file.
+    """
+    try:
+        with open(file_path, 'rb') as file_obj:
+            return np.load(file_obj)
+    except Exception as e:
+        raise NetworkSecurityException(e, sys)
+
+
+def save_object(file_path: str, obj: Any) -> None:
+    """
+    Serializes and saves a Python object using pickle.
+    """
+    try:
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(file_path, "wb") as file_obj:
+            pickle.dump(obj, file_obj)
+        logging.info(f"Object saved at: {file_path}")
+    except Exception as e:
+        raise NetworkSecurityException(e, sys)
+
+
+def load_object(file_path: str) -> Any:
+    """
+    Loads a serailized Python object from a file.
+    """
+    try:
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"The file {file_path} does not exist.")
+        
+        with open(file_path, "rb") as file_obj:
+            obj = pickle.load(file_obj)
+
+        logging.info(f"Object loaded from: {file_path}") 
+        return obj
+    
+    except Exception as e:
+        raise NetworkSecurityException(e, sys)   
