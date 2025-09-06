@@ -95,8 +95,6 @@ class DataIngestion:
     def initiate_data_ingestion(self) -> DataIngestionArtifact:
         """Orchestrates the full data ingestion pipeline."""
         try:
-            logging.info("Starting data ingestion pipeline.")
-
             dataframe = self.export_collection_as_dataframe()
             dataframe = self.export_data_into_feature_store(dataframe)
             self.split_data_as_train_test(dataframe)
@@ -106,8 +104,6 @@ class DataIngestion:
                 test_file_path=self.data_ingestion_config.testing_file_path,
             )
 
-            logging.info(artifact)
-            logging.info("Data ingestion pipeline completed successfully.\n\n")
             return artifact
 
         except Exception as e:

@@ -98,7 +98,6 @@ class ModelTrainer:
                 "Logistic Regression": {}
             }
 
-            logging.info("Started Model Training...")
             model_report: dict = evaluate_models(X_train, y_train, X_test, y_test, models, params)
 
             # Get best model
@@ -107,7 +106,6 @@ class ModelTrainer:
             best_model = models[best_model_name]
 
             logging.info(f"Best model selected: {best_model_name} with score {best_model_score}")
-            logging.info("Model Training completed successfully.")
 
             # Predictions
             y_train_pred = best_model.predict(X_train)
@@ -139,8 +137,6 @@ class ModelTrainer:
                 train_metric_artifact=classification_train_metric,
                 test_metric_artifact=classification_test_metric
             )
-
-            logging.info(model_trainer_artifact)
             return model_trainer_artifact
 
         except Exception as e:

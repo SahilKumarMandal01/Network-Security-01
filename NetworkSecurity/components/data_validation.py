@@ -87,7 +87,6 @@ class DataValidation:
 
     def initiate_data_validation(self) -> DataValidationArtifact:
         """Excecuted full data validation workflow: schema validation + drift detection."""
-        logging.info("Starting Data Validation...")
         try:
             train_fle_path = self.data_ingestion_artifact.trained_file_path
             test_file_path = self.data_ingestion_artifact.test_file_path
@@ -119,9 +118,6 @@ class DataValidation:
                 invalid_train_file_path=None,
                 drift_report_file_path=self.data_validation_config.drift_report_file_path
             )
-
-            logging.info(data_validation_artifact)
-            logging.info("Data validation completed successfully.\n\n")
 
             return data_validation_artifact
         

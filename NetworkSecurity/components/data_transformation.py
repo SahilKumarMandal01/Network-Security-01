@@ -59,8 +59,6 @@ class DataTransformation:
         - Applies KNNImputer transformation
         - Saves transformed datasets and preprocessing object
         """
-        logging.info("Starting data transformation process...")
-
         try:
             # Load train and test datasets
             train_df = self.read_data(self.data_validation_artifact.valid_train_file_path)
@@ -117,8 +115,6 @@ class DataTransformation:
                 transformed_test_file_path=self.data_transformation_config.transformed_test_file_path
             )
 
-            logging.info(data_transformation_artifact)    
-            logging.info("Data transformation completed succssfully.\n\n")
             return data_transformation_artifact
         
         except Exception as e:
