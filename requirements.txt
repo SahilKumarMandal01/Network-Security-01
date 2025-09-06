@@ -9,4 +9,6 @@ fastapi
 unicorn
 python-multipart
 pymongo[srv]==3.12
+mlflow>=2,<3
+dagshub
 # -e .

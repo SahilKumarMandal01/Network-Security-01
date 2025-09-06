@@ -130,3 +130,47 @@ def evaluate_models(X_train, y_train,X_test,y_test,models,param):
         raise NetworkSecurityException(e, sys)
 
 
+# def evaluate_models(
+#     X_train, y_train, X_test, y_test,
+#     models: Dict[str, Any], param_grids: Dict[str, Dict[str, Any]]
+# ) -> Dict[str, Dict[str, float]]:
+#     """
+#     Evaluate multiple classification models using GridSearchCV.
+#     Returns both train and test scores for each model.
+#     """
+#     try:
+#         report: Dict[str, Dict[str, float]] = {}
+
+#         for model_name, model in models.items():
+#             logging.info(f"Training model: {model_name}")
+
+#             param_grid = param_grids.get(model_name, {})
+
+#             if param_grid:
+#                 gs = GridSearchCV(model, param_grid, cv=3, n_jobs=-1, verbose=1)
+#                 gs.fit(X_train, y_train)
+#                 best_model = gs.best_estimator_
+#                 logging.info(f"Best params for {model_name}: {gs.best_params_}")
+#             else:
+#                 best_model = model.fit(X_train, y_train)
+
+#             # Predictions
+#             y_train_pred = best_model.predict(X_train)
+#             y_test_pred = best_model.predict(X_test)
+
+#             # Metrics
+#             train_score = r2_score(y_train, y_train_pred)
+#             test_score = r2_score(y_test, y_test_pred)
+
+#             logging.info(f"{model_name} - Train R2 Score: {train_score:.4f}, Test R2 Score: {test_score:.4f}")
+
+#             # Store both scores
+#             report[model_name] = {
+#                 "train_score": train_score,
+#                 "test_score": test_score
+#             }
+
+#         return report
+
+#     except Exception as e:
+#         raise NetworkSecurityException(e, sys)
