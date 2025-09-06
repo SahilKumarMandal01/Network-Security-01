@@ -106,7 +106,8 @@ class DataIngestion:
                 test_file_path=self.data_ingestion_config.testing_file_path,
             )
 
-            logging.info("Data ingestion pipeline completed successfully.")
+            logging.info(artifact)
+            logging.info("Data ingestion pipeline completed successfully.\n\n")
             return artifact
 
         except Exception as e:

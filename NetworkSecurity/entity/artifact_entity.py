@@ -47,3 +47,33 @@ class DataTransformationArtifact:
             f"  Transformed Train File Path : {self.transformed_train_file_path}\n"
             f"  Transformed Test File Path  : {self.transformed_test_file_path}\n"
         )
+
+
+@dataclass
+class ClassificationMetricArtifact:
+    f1_score: float
+    precision_score: float
+    recall_score: float
+
+    def __str__(self):
+        return (
+            f"\n    ClassificationMetricArtifact:\n"
+            f"         F1 score       : {self.f1_score:.4f}\n"
+            f"         Precision Score: {self.precision_score:.4f}\n"
+            f"         Recall Score   : {self.recall_score:.4f}\n"
+        )
+
+
+@dataclass
+class ModelTrainerArtifact:
+    trained_model_file_path: str
+    train_metric_artifact: ClassificationMetricArtifact
+    test_metric_artifact: ClassificationMetricArtifact
+
+    def __str__(self):
+        return (
+            f"\nModelTrainerArtifact:\n"
+            f"  Trained Model File Path: {self.trained_model_file_path}\n"
+            f"  Train Metrics          : {self.train_metric_artifact}\n"
+            f"  Test Metrics           : {self.test_metric_artifact}\n"
+        )
